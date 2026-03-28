@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="NexStock.API/NexStock.API.csproj" Id="dcb7be85-c90f-4822-a2f1-d52505905b8b" />
+  <Project Path="NexStock.Application/NexStock.Application.csproj" />
+  <Project Path="NexStock.Domain/NexStock.Domain.csproj" />
+  <Project Path="NexStock.Infrastructure/NexStock.Infrastructure.csproj" />
+  <Project Path="NexStock.UI/NexStock.UI.csproj" Id="fb5e2435-3a29-47a7-8cad-4d7b49b20a33" />
+  <Project Path="NexStock.Web/NexStock.Web.csproj" Id="ffe50f82-edda-4807-b115-633b36f62f57" />
+</Solution>

@@ -1,0 +1,6 @@
+@NexStock.API_HostAddress = http://localhost:5229
+
+GET {{NexStock.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
