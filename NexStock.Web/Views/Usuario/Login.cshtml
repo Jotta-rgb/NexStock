@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Login - NexStock</title>
+
+    <!-- IMPORTANTE: link do CSS -->
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body class="login-page">
+
+    <form class="login-box" asp-action="Login" method="post">
+
+        <p class="title">Conecte-se</p>
+
+        @if (ViewBag.Error != null)
+        {
+            <p class="error">@ViewBag.Error</p>
+        }
+
+        <div class="input-field">
+            <input required class="input" type="email" name="email" />
+            <label class="label">Digite o e-mail</label>
+        </div>
+
+        <div class="input-field">
+            <input required class="input" type="password" name="senha" />
+            <label class="label">Digite a senha</label>
+        </div>
+
+        <button class="btn" type="submit">
+            Entrar
+        </button>
+
+    </form>
+
+</body>
+</html>
+
+

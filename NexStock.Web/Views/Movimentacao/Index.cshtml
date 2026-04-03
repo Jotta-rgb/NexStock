@@ -1,0 +1,109 @@
+﻿@model List<NexStock.Web.Models.MovimentacaoModel>
+
+@{
+    ViewData["Title"] = "Movimentações";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="container">
+
+    <div class="header">
+        <h2>Movimentações</h2>
+        <div class="user-info">
+            <span>Usuário: @Context.Session.GetString("UserEmail")</span>
+            <a asp-controller="Usuario" asp-action="Logout" class="logout">Sair</a>
+        </div>
+    </div>
+
+    @if (TempData["Erro"] != null)
+    {
+        <p class="alert error">@TempData["Erro"]</p>
+    }
+
+    @if (TempData["Sucesso"] != null)
+    {
+        <p class="alert success">@TempData["Sucesso"]</p>
+    }
+
+    <div class="card">
+        <h3>Nova Movimentação</h3>
+
+        <form asp-action="Create" method="post" class="form">
+
+            <div class="form-group">
+                <label>Tipo</label>
+                <select name="tipo" required>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Produto</label>
+                <select name="produtoId" required>
+                    @foreach (var produto in (List<NexStock.Web.Models.ProdutoModel>)ViewBag.Produtos)
+                    {
+                        <option value="@produto.Id">@produto.Nome</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Quantidade</label>
+                <input type="number" name="quantidade" required />
+            </div>
+
+            <div class="form-group">
+                <label>Responsável</label>
+                <input type="text" name="responsavel" required />
+            </div>
+
+            <div class="form-group">
+                <label>Nota Fiscal</label>
+                <input type="text" name="notaFiscal" />
+            </div>
+
+            <button class="btn-primary" type="submit">Registrar</button>
+
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>Histórico</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Responsável</th>
+                    <th>Nota Fiscal</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var produtos = ViewBag.Produtos as List<NexStock.Web.Models.ProdutoModel>;
+                    var produto = produtos?.FirstOrDefault(p => p.Id == item.ProdutoId);
+
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Tipo</td>
+                        <td>@(produto?.Nome ?? "Produto não encontrado")</td>
+                        <td>@item.Quantidade</td>
+                        <td>@item.Responsavel</td>
+                        <td>@item.NotaFiscal</td>
+                        <td>@item.Data</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+
+</div>
