@@ -1,10 +1,20 @@
 ﻿@model List<NexStock.Web.Models.MovimentacaoModel>
 
+
+    
+<div class="loadingspinnerB">
+    <div id="square1"></div>
+    <div id="square2"></div>
+    <div id="square3"></div>
+    <div id="square4"></div>
+    <div id="square5"></div>
+</div>
+
+
+
 @{
     ViewData["Title"] = "Movimentações";
 }
-
-<link rel="stylesheet" href="~/css/site.css" />
 
 <div class="container">
 
@@ -26,6 +36,7 @@
         <p class="alert success">@TempData["Sucesso"]</p>
     }
 
+    <!-- CARD FORM -->
     <div class="card">
         <h3>Nova Movimentação</h3>
 
@@ -64,11 +75,14 @@
                 <input type="text" name="notaFiscal" />
             </div>
 
-            <button class="btn-primary" type="submit">Registrar</button>
+            <button class="btn-primary" type="submit">
+                Registrar
+            </button>
 
         </form>
     </div>
 
+    <!-- CARD TABELA -->
     <div class="card">
         <h3>Histórico</h3>
 
@@ -84,6 +98,7 @@
                     <th>Data</th>
                 </tr>
             </thead>
+
             <tbody>
                 @foreach (var item in Model)
                 {
@@ -100,10 +115,11 @@
                         <td>@item.Data</td>
                     </tr>
                 }
+
             </tbody>
+
         </table>
 
-
-
+    </div>
 
 </div>

@@ -113,30 +113,23 @@ public class UsuarioController : ControllerBase
 	}
 
 	[HttpDelete("{id}")]
-
 	public async Task<IActionResult> Remover(int id)
-
 	{
-
 		try
-
 		{
-
 			await _usuarioService.RemoverAsync(id);
-
 			return NoContent();
-
 		}
-
 		catch (KeyNotFoundException ex)
-
 		{
-
 			return NotFound(new { mensagem = ex.Message });
-
 		}
-
+		catch (Exception ex)
+		{
+			return BadRequest(new { mensagem = ex.Message });
+		}
 	}
+
 
 	[HttpPut("{id}")]
 

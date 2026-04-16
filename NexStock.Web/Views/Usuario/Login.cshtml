@@ -9,11 +9,24 @@
     <meta charset="utf-8" />
     <title>Login - NexStock</title>
 
-    <!-- IMPORTANTE: link do CSS -->
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
 <body class="login-page">
+
+    <!-- LOADING -->
+    <div id="loading-screen">
+        <div class="loading-spinner">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="logo">
+        <img src="@Url.Content("~/img/logo.png")" alt="Logo">
+    </div>
 
     <form class="login-box" asp-action="Login" method="post">
 
@@ -34,13 +47,14 @@
             <label class="label">Digite a senha</label>
         </div>
 
-        <button class="btn" type="submit">
+        <button class="btn" type="button" onclick="enviarComLoading()" >
             Entrar
         </button>
 
     </form>
 
+    <!-- 🔥 IMPORTANTE -->
+    <script src="~/js/site.js"></script>
+
 </body>
 </html>
-
-

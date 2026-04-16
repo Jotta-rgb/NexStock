@@ -119,29 +119,23 @@ public class ProdutoController : ControllerBase
 	}
 
 	[HttpDelete("{id}")]
-
 	public async Task<IActionResult> Remover(int id)
-
 	{
-
 		try
-
 		{
-
 			await _produtoService.RemoverAsync(id);
-
 			return NoContent();
-
 		}
-
 		catch (KeyNotFoundException ex)
-
 		{
-
 			return NotFound(new { mensagem = ex.Message });
-
 		}
-
+		catch (Exception ex)
+		{
+			return BadRequest(new { mensagem = ex.Message });
+		}
 	}
+
+
 
 }
