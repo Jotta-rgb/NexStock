@@ -15,6 +15,7 @@ builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IMovimentacaoRepository, MovimentacaoRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<ILocalizacaoRepository, LocalizacaoRepository>();
+builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
 
 // Registro dos services
 builder.Services.AddScoped<UsuarioService>();
@@ -22,6 +23,7 @@ builder.Services.AddScoped<ProdutoService>();
 builder.Services.AddScoped<MovimentacaoService>();
 builder.Services.AddScoped<CategoriaService>();
 builder.Services.AddScoped<LocalizacaoService>();
+builder.Services.AddScoped<DashboardService>();
 
 builder.Services.AddCors(options =>
 {

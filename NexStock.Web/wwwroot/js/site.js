@@ -1,4 +1,23 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function mostrarLoading() {
+    const loading = document.getElementById("loading-screen");
+    if (loading) {
+        loading.classList.add("active");
+    }
+}
 
-// Write your JavaScript code.
+// 🚀 FUNÇÃO DE ENVIO COM DELAY
+function enviarComLoading() {
+    mostrarLoading();
+
+    setTimeout(() => {
+        document.querySelector(".login-box").submit();
+    }, 2000); // tempo que você quiser
+}
+
+// 🔥 GARANTE QUE SEMPRE SOME NA NOVA PÁGINA
+window.addEventListener("load", function () {
+    const loading = document.getElementById("loading-screen");
+    if (loading) {
+        loading.classList.remove("active");
+    }
+});

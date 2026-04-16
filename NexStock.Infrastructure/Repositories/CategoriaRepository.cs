@@ -46,21 +46,22 @@ public class CategoriaRepository : ICategoriaRepository
 	}
 
 	public async Task RemoverAsync(int id)
-
 	{
-
 		var categoria = await ObterPorIdAsync(id);
 
-		if (categoria != null)
+		if (categoria == null)
+			return;
 
+		try
 		{
-
 			_context.Categorias.Remove(categoria);
-
 			await _context.SaveChangesAsync();
-
 		}
-
+		catch (DbUpdateException)
+		{
+			throw new Exception("Não é possível excluir esta categoria, pois existem produtos vinculados a ela.");
+		}
 	}
+
 
 }

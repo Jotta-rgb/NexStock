@@ -48,21 +48,20 @@ public class LocalizacaoRepository : ILocalizacaoRepository
 	}
 
 	public async Task RemoverAsync(int id)
-
 	{
-
 		var localizacao = await ObterPorIdAsync(id);
 
-		if (localizacao != null)
+		if (localizacao == null)
+			return;
 
+		try
 		{
-
 			_context.Localizacoes.Remove(localizacao);
-
 			await _context.SaveChangesAsync();
-
 		}
-
+		catch (DbUpdateException)
+		{
+			throw new Exception("Não é possível excluir esta localização, pois existem produtos vinculados a ela.");
+		}
 	}
-
 }

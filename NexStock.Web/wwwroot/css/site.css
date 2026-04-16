@@ -1,14 +1,35 @@
-/* ===== LOGIN NEXSTOCK ===== */
+/* =========================================
+   🔧 RESET GLOBAL + FOOTER FIX
+========================================= */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* =========================================
+   🔐 LOGIN
+========================================= */
 
 .login-page {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
     background: #050047;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .login-box {
@@ -20,6 +41,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 55px;
 }
 
 .title {
@@ -28,21 +50,19 @@
     font-weight: bold;
     margin-bottom: 25px;
     text-align: center;
-    letter-spacing: 1px;
 }
 
 .input-field {
-    width: 100%;
-    margin-bottom: 20px;
+    width: 91%;
+    margin-bottom: 10px;
 }
 
 .input {
-    width: 92%;
+    width: 100%;
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    outline: none;
-    font-size: 14px;
+    margin-left: -15px;
 }
 
     .input:focus {
@@ -52,8 +72,6 @@
 .label {
     font-size: 12px;
     color: #666;
-    display: block;
-    margin-top: 5px;
 }
 
 .btn {
@@ -63,32 +81,27 @@
     border-radius: 6px;
     background: #f69200;
     color: white;
-    font-size: 14px;
     cursor: pointer;
-    margin-top: 10px;
 }
-
-    .btn:hover {
-        opacity: 0.9;
-    }
 
 .error {
     color: red;
-    margin-bottom: 15px;
-    font-size: 14px;
     text-align: center;
 }
 
+/* LOGO */
 
-
-
-/* ===== MOVIMENTAÇÕES ===== */
-
-.container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 20px;
+.logo img {
+    width: 150px;
+    margin-top: -300px;
+    border-radius: 23px;
+    padding: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
+
+/* =========================================
+   📦 MOVIMENTAÇÕES
+========================================= */
 
 .header {
     display: flex;
@@ -117,6 +130,8 @@
         text-decoration: underline;
     }
 
+/* CARD */
+
 .card {
     background: #ffffff;
     padding: 20px;
@@ -126,7 +141,6 @@
 }
 
     .card h3 {
-        margin-bottom: 15px;
         color: #0d47a1;
     }
 
@@ -168,16 +182,11 @@
     cursor: pointer;
 }
 
-    .btn-primary:hover {
-        opacity: 0.9;
-    }
-
 /* ALERTAS */
 
 .alert {
     padding: 10px;
     border-radius: 6px;
-    margin-bottom: 15px;
 }
 
     .alert.error {
@@ -208,34 +217,117 @@
         border-bottom: 1px solid #ddd;
     }
 
-    .table tr:hover {
-        background: #f5f5f5;
-    }
+/* =========================================
+   🔻 FOOTER
+========================================= */
 
-
-
-/* ===== FIX FOOTER GLOBAL ===== */
-
-/*html, body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}*/
-
-/* container principal cresce */
-/*.container {
-    flex: 1;
-}*/
-
-/* footer */
-/*.footer {
+.footer {
     background: #0d47a1;
     color: white;
     text-align: center;
     padding: 15px;
-    font-size: 14px;
-}*/
+}
+
+/* =========================================
+   🔷 NAVBAR
+========================================= */
+
+.navbar-custom {
+    background: linear-gradient(90deg, #0d47a1, #1976d2);
+    padding: 15px 20px;
+}
+
+    .navbar-custom .navbar-brand {
+        color: #ffffff !important;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+        .navbar-custom .navbar-brand:hover {
+            color: #ff9800 !important;
+        }
+
+/* =========================================
+   🔥 LOADING (IMPORTANTE)
+========================================= */
+
+#loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #050047;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+    #loading-screen.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+/* SPINNER */
+
+.loading-spinner {
+    position: relative;
+    height: 96px;
+    width: 96px;
+    border-radius: 50%;
+    animation: rotate_3922 1.2s linear infinite;
+    /* 🔥 NOVO GRADIENTE */
+    background-image: linear-gradient(#0d47a1, #1976d2, #ff9800);
+}
+
+    .loading-spinner span {
+        position: absolute;
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+        /* 🔥 CORES INTERNAS */
+    background-image: linear-gradient(#1976d2, #ff9800);
+
+    }
+
+        .loading-spinner span:nth-of-type(1) {
+            filter: blur(5px);
+        }
+
+        .loading-spinner span:nth-of-type(2) {
+            filter: blur(10px);
+        }
+
+        .loading-spinner span:nth-of-type(3) {
+            filter: blur(25px);
+        }
+
+        .loading-spinner span:nth-of-type(4) {
+            filter: blur(50px);
+        }
+
+    .loading-spinner::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        background-color: #fff;
+        border: solid 5px #ffffff;
+        border-radius: 50%;
+    }
+
+@keyframes rotate_3922 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -129,29 +129,22 @@ public class LocalizacaoController : ControllerBase
 	}
 
 	[HttpDelete("{id}")]
-
 	public async Task<IActionResult> Remover(int id)
-
 	{
-
 		try
-
 		{
-
 			await _localizacaoService.RemoverAsync(id);
-
 			return NoContent();
-
 		}
-
 		catch (KeyNotFoundException ex)
-
 		{
-
 			return NotFound(new { mensagem = ex.Message });
-
 		}
-
+		catch (Exception ex)
+		{
+			return BadRequest(new { mensagem = ex.Message });
+		}
 	}
+
 
 }

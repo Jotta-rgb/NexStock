@@ -47,21 +47,23 @@ public class ProdutoRepository : IProdutoRepository
 	}
 
 	public async Task RemoverAsync(int id)
-
 	{
-
 		var produto = await ObterPorIdAsync(id);
 
-		if (produto != null)
+		if (produto == null)
+			return;
 
+		try
 		{
-
 			_context.Produtos.Remove(produto);
-
 			await _context.SaveChangesAsync();
-
 		}
-
+		catch (DbUpdateException)
+		{
+			throw new Exception("Não é possível excluir este produto, pois existem movimentações vinculadas a ele.");
+		}
 	}
+
+
 
 }
