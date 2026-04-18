@@ -13,8 +13,9 @@ body {
     flex-direction: column;
 }
 
+/* 🔥 AUMENTEI A LARGURA */
 .container {
-    max-width: 1100px;
+    max-width: 1400px; /* antes era 1100 */
     margin: 40px auto;
     padding: 20px;
     flex: 1;
@@ -105,18 +106,20 @@ body {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* 🔥 centraliza */
     align-items: center;
     margin-bottom: 25px;
 }
 
     .header h2 {
+        text-align: center;
+        font-size: 32px;
         color: #0d47a1;
     }
 
 .user-info {
     display: flex;
-    gap: 15px;
+    gap: 20px; /* 🔥 mais espaço */
     align-items: center;
 }
 
@@ -134,14 +137,15 @@ body {
 
 .card {
     background: #ffffff;
-    padding: 20px;
+    padding: 25px; /* 🔥 mais espaçamento interno */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom: 25px;
+    margin-bottom: 30px; /* 🔥 mais espaço entre cards */
 }
 
     .card h3 {
         color: #0d47a1;
+        margin-bottom: 20px;
     }
 
 /* FORM */
@@ -149,7 +153,7 @@ body {
 .form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 20px; /* 🔥 mais espaçamento */
 }
 
 .form-group {
@@ -159,7 +163,7 @@ body {
 
     .form-group input,
     .form-group select {
-        padding: 10px;
+        padding: 12px; /* 🔥 maior */
         border-radius: 6px;
         border: 1px solid #ccc;
     }
@@ -173,19 +177,20 @@ body {
 
 .btn-primary {
     grid-column: span 2;
-    padding: 12px;
+    padding: 14px; /* 🔥 maior */
     border: none;
     border-radius: 6px;
     background: linear-gradient(90deg, #f57c00, #ff9800);
     color: white;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 /* ALERTAS */
 
 .alert {
-    padding: 10px;
+    padding: 12px;
     border-radius: 6px;
 }
 
@@ -199,23 +204,88 @@ body {
         color: #2e7d32;
     }
 
-/* TABELA */
+/* =========================================
+   📊 TABELA (AQUI FOI A PRINCIPAL MELHORIA)
+========================================= */
 
 .table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 15px;
 }
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* 🔥 ESSENCIAL */
+}
+
+    .table th,
+    .table td {
+        padding: 14px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+
+        /* 🔥 Distribuição das colunas */
+        .table th:nth-child(1) {
+            width: 5%;
+        }
+        /* Id */
+        .table th:nth-child(2) {
+            width: 10%;
+        }
+        /* Tipo */
+        .table th:nth-child(3) {
+            width: 25%;
+        }
+        /* Produto */
+        .table th:nth-child(4) {
+            width: 10%;
+        }
+        /* Quantidade */
+        .table th:nth-child(5) {
+            width: 20%;
+        }
+        /* Responsável */
+        .table th:nth-child(6) {
+            width: 105%;
+        }
+        /* Nota Fiscal */
+        .table th:nth-child(7) {
+            width: 15%;
+        }
+        /* Data */
 
     .table th {
         background: #0d47a1;
         color: white;
-        padding: 10px;
+        padding: 14px; /* 🔥 mais espaço */
+        text-align: left;
+        font-size: 15px;
     }
 
     .table td {
-        padding: 10px;
+        padding: 14px; /* 🔥 mais espaço */
         border-bottom: 1px solid #ddd;
     }
+
+    /* 🔥 efeito hover (fica mais profissional) */
+    .table tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    /* 🔥 evita texto grudado */
+    .table td,
+    .table th {
+        white-space: nowrap;
+    }
+
+/* 🔥 permite scroll horizontal se necessário */
+.card table {
+    display: block;
+    overflow-x: auto;
+}
 
 /* =========================================
    🔻 FOOTER
@@ -232,6 +302,14 @@ body {
    🔷 NAVBAR
 ========================================= */
 
+body {
+    padding-top: 70px; /* altura da navbar */
+}
+
+.navbar {
+    z-index: 9999;
+}
+
 .navbar-custom {
     background: linear-gradient(90deg, #0d47a1, #1976d2);
     padding: 15px 20px;
@@ -247,8 +325,10 @@ body {
             color: #ff9800 !important;
         }
 
+
+
 /* =========================================
-   🔥 LOADING (IMPORTANTE)
+   🔥 LOADING
 ========================================= */
 
 #loading-screen {
@@ -280,7 +360,6 @@ body {
     width: 96px;
     border-radius: 50%;
     animation: rotate_3922 1.2s linear infinite;
-    /* 🔥 NOVO GRADIENTE */
     background-image: linear-gradient(#0d47a1, #1976d2, #ff9800);
 }
 
@@ -289,9 +368,7 @@ body {
         border-radius: 50%;
         height: 100%;
         width: 100%;
-        /* 🔥 CORES INTERNAS */
-    background-image: linear-gradient(#1976d2, #ff9800);
-
+        background-image: linear-gradient(#1976d2, #ff9800);
     }
 
         .loading-spinner span:nth-of-type(1) {
@@ -330,4 +407,87 @@ body {
     to {
         transform: rotate(360deg);
     }
+}
+
+.tipo-entrada {
+    color: #2e7d32 !important;
+    font-weight: bold;
+}
+
+.tipo-saida {
+    color: #c62828 !important;
+    font-weight: bold;
+}
+
+/* 🔍 CAMPO DE BUSCA */
+.input-busca {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+    .input-busca:focus {
+        border: 1px solid #0d47a1;
+        outline: none;
+    }
+
+.paginacao {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* 🔥 mais espaço entre tudo */
+}
+
+    .paginacao button {
+        padding: 8px 10px;
+        border: none;
+        background: #0d47a1;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        margin: 0 4px; /* 🔥 espaço entre os botões */
+        min-width: 35px; /* 🔥 deixa todos com tamanho parecido */
+        transition: 0.2s;
+    }
+
+        .paginacao button:hover {
+            background: #1565c0;
+            transform: translateY(-2px); /* 🔥 efeito leve */
+        }
+
+        .paginacao button.ativo {
+            background: #ff9800;
+            font-weight: bold;
+            transform: scale(1.1);
+        }
+
+
+.user-navbar {
+    margin-left: auto; /* joga pra direita */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+    .user-navbar .logout {
+        color: #ff9800;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+        .user-navbar .logout:hover {
+            text-decoration: underline;
+        }
+
+
+.logo-navbar {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 6px;
 }

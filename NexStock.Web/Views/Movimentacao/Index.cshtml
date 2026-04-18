@@ -19,11 +19,10 @@
 <div class="container">
 
     <div class="header">
-        <h2>Movimentações</h2>
-        <div class="user-info">
-            <span>Usuário: @Context.Session.GetString("UserEmail")</span>
-            <a asp-controller="Usuario" asp-action="Logout" class="logout">Sair</a>
-        </div>
+        <h2>
+            <i class="bi bi-box-seam"></i>
+            Movimentações
+        </h2>
     </div>
 
     @if (TempData["Erro"] != null)
@@ -86,6 +85,8 @@
     <div class="card">
         <h3>Histórico</h3>
 
+        <input type="text" id="buscaTabela" placeholder="Buscar na tabela..." class="input-busca" />
+
         <table class="table">
             <thead>
                 <tr>
@@ -107,7 +108,13 @@
 
                     <tr>
                         <td>@item.Id</td>
-                        <td>@item.Tipo</td>
+
+                        <!-- 🔥 AQUI ESTÁ A COR -->
+
+                        <td class="@(item.Tipo.ToLower() == "entrada" ? "tipo-entrada" : "tipo-saida")">
+                            @item.Tipo
+                        </td>
+
                         <td>@(produto?.Nome ?? "Produto não encontrado")</td>
                         <td>@item.Quantidade</td>
                         <td>@item.Responsavel</td>
@@ -115,10 +122,18 @@
                         <td>@item.Data</td>
                     </tr>
                 }
-
             </tbody>
 
         </table>
+
+        <!-- NAVEGAÇÃO DA TABELA -->
+
+        <div class="paginacao">
+            <button id="btnAnterior">Anterior</button>
+            <span id="numerosPaginas"></span>
+            <button id="btnProximo">Próximo</button>
+        </div>
+
 
     </div>
 

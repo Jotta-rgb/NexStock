@@ -1,5 +1,4 @@
-﻿
-using NexStock.UI.Services;
+﻿using NexStock.UI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,18 +55,6 @@ namespace NexStock.UI
 			dgvProdutos.RowHeadersVisible = false;
 		}
 
-
-
-		//private void ConfigurarGrid()
-		//{
-		//	dgvProdutos.AutoGenerateColumns = true;
-		//	dgvProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-		//	dgvProdutos.MultiSelect = false;
-		//	dgvProdutos.ReadOnly = true;
-		//	dgvProdutos.AllowUserToAddRows = false;
-		//	dgvProdutos.AllowUserToDeleteRows = false;
-		//}
-
 		private async Task CarregarCombosAsync()
 		{
 			try
@@ -114,30 +101,6 @@ namespace NexStock.UI
 					MessageBoxIcon.Error);
 			}
 		}
-
-
-
-		//private async Task CarregarProdutosAsync()
-		//{
-		//	try
-		//	{
-		//		dgvProdutos.AutoGenerateColumns = false;
-
-		//		_produtosCache = await _produtoService.ListarProdutosAsync();
-
-		//		dgvProdutos.DataSource = null;
-		//		dgvProdutos.DataSource = _produtosCache;
-		//	}
-		//	catch (Exception ex)
-		//	{
-		//		MessageBox.Show(
-		//			$"Erro ao carregar produtos: {ex.Message}",
-		//			"Erro",
-		//			MessageBoxButtons.OK,
-		//			MessageBoxIcon.Error);
-		//	}
-		//}
-
 
 		private void LimparCampos()
 		{
@@ -256,7 +219,6 @@ namespace NexStock.UI
 				if (!ValidarFormulario(out var nome, out var unidade, out var quantidade, out var estoqueMinimo, out var categoriaId, out var localizacaoId))
 					return;
 
-
 				guna2Button3.Enabled = false;
 
 				var produto = await _produtoService.CadastrarProdutoAsync(
@@ -297,7 +259,6 @@ namespace NexStock.UI
 			}
 			finally
 			{
-
 				guna2Button3.Enabled = true;
 			}
 		}
@@ -430,8 +391,6 @@ namespace NexStock.UI
 			}
 		}
 
-
-
 		private async void btnBuscarProduto_Click(object? sender, EventArgs e)
 		{
 			try
@@ -491,33 +450,15 @@ namespace NexStock.UI
 			dgvProdutos.DataSource = _produtosCache;
 		}
 
-		private void guna2Button4_Click(object? sender, EventArgs e)
-		{
-			LimparCampos();
-		}
-
-		private void btnSairProdutos_Click(object? sender, EventArgs e)
-		{
-			Close();
-		}
-
-		private void btnBuscarProduto_Click_1(object sender, EventArgs e)
+		private void guna2Button4_Click(object sender, EventArgs e)
 		{
 
 		}
 
-		private void guna2Button2_Click_1(object sender, EventArgs e)
-		{
-
-		}
-
-		private void guna2Button3_Click_1(object sender, EventArgs e)
+		private void btnSairProdutos_Click(object sender, EventArgs e)
 		{
 
 		}
 	}
 }
-
-
-
 

@@ -239,6 +239,7 @@
 			btnSairProdutos.Size = new Size(78, 35);
 			btnSairProdutos.TabIndex = 8;
 			btnSairProdutos.Text = "⬅️ Sair";
+			btnSairProdutos.Click += btnSairProdutos_Click;
 			// 
 			// guna2HtmlLabel2
 			// 
@@ -267,7 +268,6 @@
 			btnBuscarProduto.Size = new Size(78, 27);
 			btnBuscarProduto.TabIndex = 4;
 			btnBuscarProduto.Text = "Buscar";
-			btnBuscarProduto.Click += btnBuscarProduto_Click_1;
 			// 
 			// guna2Button2
 			// 
@@ -286,7 +286,6 @@
 			guna2Button2.Size = new Size(230, 27);
 			guna2Button2.TabIndex = 4;
 			guna2Button2.Text = "Filtrar Estoque Mínimo";
-			guna2Button2.Click += guna2Button2_Click_1;
 			// 
 			// txtNomeProduto
 			// 
@@ -419,7 +418,6 @@
 			guna2Button3.Size = new Size(78, 27);
 			guna2Button3.TabIndex = 4;
 			guna2Button3.Text = "Criar";
-			guna2Button3.Click += guna2Button3_Click_1;
 			// 
 			// guna2Button4
 			// 
@@ -438,6 +436,7 @@
 			guna2Button4.Size = new Size(74, 27);
 			guna2Button4.TabIndex = 6;
 			guna2Button4.Text = "Cancelar";
+			guna2Button4.Click += guna2Button4_Click;
 			// 
 			// frmProdutos
 			// 

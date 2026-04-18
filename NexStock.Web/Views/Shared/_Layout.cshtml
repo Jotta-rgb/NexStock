@@ -7,17 +7,34 @@
     <title>@ViewData["Title"] - NexStock</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark navbar-custom mb-3">
+        <nav class="navbar navbar-expand-sm navbar-dark navbar-custom fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    NexStock
+
+                <!-- LOGO -->
+                <a class="navbar-brand d-flex align-items-center">
+
+                    <img src="~/img/logo.png" alt="Logo" class="logo-navbar" />
+
+                    <span>NexStock</span>
+
                 </a>
+
+                <!-- 🔥 USUÁRIO + SAIR -->
+                <div class="user-navbar">
+                    <span>Usuário: @Context.Session.GetString("UserEmail")</span>
+
+                    <a asp-controller="Usuario" asp-action="Logout" class="logout">
+                        Sair
+                    </a>
+                </div>
+
             </div>
         </nav>
     </header>
